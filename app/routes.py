@@ -72,8 +72,8 @@ def eliminar_tarea(tarea_id):
     tarea = RegistroTarea.query.get_or_404(tarea_id)
     
     # no permitir eliminar si la tarea está completada
-    if tarea.estado.nombre == "Completada":
-        flash('Las tareas completadas no pueden ser eliminadas.', 'warning')
+    if tarea.estado.nombre == "Completada" or tarea.estado.nombre == "En Progreso":
+        flash('Las tareas completadas o en progreso no pueden ser eliminadas.', 'warning')
         return redirect(url_for('index'))
     
     db.session.delete(tarea)

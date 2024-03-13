@@ -25,7 +25,9 @@
                 {% for tarea in tareas %} 
                 {% if tarea.categoria_id == categoria.id %}
                     <li>
-                        <p>{{ tarea.descripcion }} - {{ tarea.fecha_inicio.strftime('%Y-%m-%d') }}</p>
+                        <p>tarea: {{ tarea.descripcion }}</p> 
+                        <p>fecha inicio:{{ tarea.fecha_inicio.strftime('%Y-%m-%d') }}</p>
+                        <p>fecha fin: {{ tarea.fecha_fin.strftime('%Y-%m-%d') }}</p>
                         <p>Estado: {{ tarea.estado.nombre }}</p>
                         <a href="{{ url_for('editar_tarea', tarea_id=tarea.id) }}"><i class="fas fa-edit"></i> Editar</a>
                         <a href="{{ url_for('eliminar_tarea', tarea_id=tarea.id) }}" onclick="return confirm('¿Estás seguro?');"><i class="fas fa-trash"></i> Eliminar</a>
