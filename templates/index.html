@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Tareas</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="header-container">
+        <h1>Lista de Tareas</h1>
+    </div>
+    <div class="menu-container">
+        <ul class="menu">
+            <li><a href="{{ url_for('nueva_tarea') }}">Agregar Nueva Tarea</a></li>
+            <li><a href="/categorias">Categorías</a></li>
+            <li><a href="/?filtro=todas">Todas las Tareas</a></li>
+            <li><a href="/?filtro=completadas">Tareas Completadas</a></li>
+            <li><a href="/?filtro=pendientes">Tareas Pendientes</a></li>
+            <li><a href="/?filtro=en_progreso">Ver Tareas En Progreso</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        {% for categoria in categorias %}
+            <h2>{{ categoria.nombre }}</h2>
+            <ul>
+                {% for tarea in tareas %} 
+                {% if tarea.categoria_id == categoria.id %}
+                    <li>
+                        <p>{{ tarea.descripcion }} - {{ tarea.fecha_inicio.strftime('%Y-%m-%d') }}</p>
+                        <p>Estado: {{ tarea.estado.nombre }}</p>
+                        <a href="{{ url_for('editar_tarea', tarea_id=tarea.id) }}"><i class="fas fa-edit"></i> Editar</a>
+                        <a href="{{ url_for('eliminar_tarea', tarea_id=tarea.id) }}" onclick="return confirm('¿Estás seguro?');"><i class="fas fa-trash"></i> Eliminar</a>
+                        {% if tarea.estado.nombre != "Completada" %}
+                            <a href="{{ url_for('cambiar_estado_tarea', tarea_id=tarea.id, nuevo_estado='Completada') }}"><i class="fas fa-check"></i> Marcar como Completada</a>
+                        {% endif %}
+                        {% if tarea.estado.nombre != "En Progreso" %}
+                            <a href="{{ url_for('cambiar_estado_tarea', tarea_id=tarea.id, nuevo_estado='En Progreso') }}"><i class="fas fa-running"></i> Marcar como En Progreso</a>
+                        {% endif %}
+                        {% if tarea.estado.nombre != "Pendiente" %}
+                            <a href="{{ url_for('cambiar_estado_tarea', tarea_id=tarea.id, nuevo_estado='Pendiente') }}"><i class="fas fa-hourglass-start"></i> Marcar como Pendiente</a>
+                        {% endif %}
+                    </li>
+                    {% endif %}
+                {% else %}
+                    <li>No hay tareas disponibles en esta categoría</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay categorías definidas.</p>
+        {% endfor %}
+    </div>
+</body>
+<style>
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffdab9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.header-container {
+    background-color: #f8ad9d;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.header-container h1 {
+    margin: 0;
+    color: #333;
+}
+
+.menu-container {
+    background-color:  #f4978e;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 10px 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.menu li a {
+    display: block;
+    color: #faf3f3;
+    padding: 8px 15px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu li a:hover, .menu li a.active {
+    background-color: #c8f5f2;
+    color: #333;
+}
+
+ul.lista-tareas {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+ul.lista-tareas li {
+    background-color: #f7f3f0;
+    border: 1px solid #f7f3f0;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tarea-descripcion, .tarea-fecha, .tarea-estado, .tarea-acciones {
+    padding: 0 10px;
+}
+
+.tarea-acciones a {
+    margin: 0 5px;
+    color: #888;
+    transition: color 0.3s;
+}
+
+.tarea-acciones a:hover {
+    color: #5c5c5c;
+}
+
+.fa-check { color: #4caf50; }
+.fa-edit { color: #ffeb3b; }
+.fa-trash { color: #f44336; }
+.completada { color: #4caf50; }
+.pendiente { color: #59adf7; }
+</style>
+</html>
+

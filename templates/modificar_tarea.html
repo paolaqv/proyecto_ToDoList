@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modificar Tarea</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Modificar Tarea</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" required>{{ tarea.descripcion }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="fecha_inicio">Fecha de Inicio</label>
+                <input type="date" id="fecha_inicio" name="fecha_inicio" value="{{ tarea.fecha_inicio.strftime('%Y-%m-%d') }}">
+            </div>
+            <div class="form-group">
+                <label for="fecha_fin">Fecha de Fin</label>
+                <input type="date" id="fecha_fin" name="fecha_fin" value="{{ tarea.fecha_fin.strftime('%Y-%m-%d') if tarea.fecha_fin }}">
+            </div>
+            <div class="form-group">
+                <label for="categoria_id">Categoría</label>
+                <select id="categoria_id" name="categoria_id">
+                    {% for categoria in categorias %}
+                        <option value="{{ categoria.id }}" {% if categoria.id == tarea.categoria_id %} selected {% endif %}>{{ categoria.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="estado_id">Estado</label>
+                <select id="estado_id" name="estado_id">
+                    {% for estado in estados %}
+                        <option value="{{ estado.id }}" {% if estado.id == tarea.estado_id %} selected {% endif %}>{{ estado.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+</body>
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #ffdab9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    form {
+        background-color: #f8ad9d;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        width: 300px;
+        box-sizing: border-box;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    label {
+        color: #333;
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+    }
+
+    input[type=text],
+    input[type=date],
+    input[type=submit],
+    a.button-cancel {
+        width: 100%;
+        padding: 8px;
+        margin-top: 8px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        box-sizing: border-box; 
+    }
+
+    input[type=submit] {
+        background-color: #a4d4ae;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    input[type=submit]:hover,
+    a.button-cancel:hover {
+        background-color: #92c9b1;
+    }
+
+    a.button-cancel {
+        text-align: center;
+        display: block;
+        text-decoration: none;
+        background-color: #e9e9e9;
+        color: #333;
+        margin-top: 13px;
+        padding: 8px;
+        font-weight: bold;
+    }
+</style>
+</html>
