@@ -41,9 +41,9 @@
             <div class="informacion">
               <p class="name">{{ tarea.descripcion }}</p>
               <p>
-                Fecha de Inicio:{{ tarea.fecha_inicio.strftime('%Y-%m-%d') }}
+                Fecha de Inicio:{{ tarea.fecha_inicio.strftime('%Y-%m-%d %H:%M') }}
               </p>
-              <p>Fecha Limite: {{ tarea.fecha_fin.strftime('%Y-%m-%d') }}</p>
+              <p>Fecha Limite: {{ tarea.fecha_fin.strftime('%Y-%m-%d %H:%M') }}</p>
               <p>Estado: {{ tarea.estado.nombre }}</p>
             </div>
             <div class="acciones">

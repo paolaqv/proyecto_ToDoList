@@ -13,11 +13,11 @@
             </div>
             <div class="form-group">
                 <label for="fecha_inicio">Fecha de Inicio</label>
-                <input type="date" id="fecha_inicio" name="fecha_inicio" value="{{ tarea.fecha_inicio.strftime('%Y-%m-%d') }}">
+                <input type="datetime-local" id="fecha_inicio" name="fecha_inicio" value="{{ tarea.fecha_inicio.strftime('%Y-%m-%d %H:%M') }}">
             </div>
             <div class="form-group">
                 <label for="fecha_fin">Fecha de Fin</label>
-                <input type="date" id="fecha_fin" name="fecha_fin" value="{{ tarea.fecha_fin.strftime('%Y-%m-%d') if tarea.fecha_fin }}">
+                <input type="datetime-local" id="fecha_fin" name="fecha_fin" value="{{ tarea.fecha_fin.strftime('%Y-%m-%d %H:%M') if tarea.fecha_fin }}">
             </div>
             <div class="form-group">
                 <label for="categoria_id">Categoría</label>
