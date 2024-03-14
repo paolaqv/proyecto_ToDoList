@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tareas</title>
+</head>
+<body>
+    <h1>Tareas</h1>
+    <p>
+        Ordenar por:
+        <a href="/tareas?ordenar_por_fecha=true">Fecha de creación</a> |
+        <a href="/tareas?ordenar_por_descripcion=true">Descripción</a> |
+        <a href="/tareas?ordenar_por_fecha=true&ordenar_por_descripcion=true">Ambos</a>
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descripción</th>
+                <th>Fecha de inicio</th>
+                <th>Fecha de fin</th>
+                <th>Fecha de creación</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarea in tareas %}
+            <tr>
+                <td>{{ tarea.id }}</td>
+                <td>{{ tarea.descripcion }}</td>
+                <td>{{ tarea.fecha_inicio }}</td>
+                <td>{{ tarea.fecha_fin }}</td>
+                <td>{{ tarea.fecha_creacion }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

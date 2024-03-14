@@ -1,8 +1,14 @@
-from flask import render_template, request, redirect, url_for, flash
+from flask import jsonify, render_template, request, redirect, url_for, flash, Flask
 from datetime import datetime, timedelta
 from . import app, db
 from .modelos import Usuario, Categoria, Estado, RegistroTarea
 
+from . import login_manager
+
+
+from flask import render_template, request, redirect, url_for, flash
+from flask_login import UserMixin, login_user, logout_user, login_required
+from werkzeug.security import generate_password_hash, check_password_hash
 
 @app.route('/')
 def index():
@@ -127,3 +133,66 @@ def cambiar_estado_tarea(tarea_id, nuevo_estado):
     else:
         flash('Estado no válido', 'danger')
     return redirect(url_for('index'))
+
+
+@app.route('/registro', methods=['GET', 'POST'])
+def registro():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        nuevo_usuario = Usuario(username=username, password=password, is_active=True)
+
+        db.session.add(nuevo_usuario)
+        db.session.commit()
+
+        flash('Usuario registrado con éxito', 'success')
+        return redirect(url_for('login'))
+
+    return render_template('registro.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        usuario = Usuario.query.filter_by(username=username).first()
+
+        if usuario and usuario.password == password and usuario.is_active:
+            flash('Inicio de sesión exitoso', 'success')
+            return redirect(url_for('index'))
+        else:
+            flash('Nombre de usuario o contraseña incorrectos', 'danger')
+
+    return render_template('login.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('Has cerrado sesión', 'success')
+    return redirect(url_for('index'))
+
+
+
+@app.route('/tareas', methods=['GET'])
+def obtener_tareas():
+    # Obtén los parámetros de ordenación
+    ordenar_por_fecha = request.args.get('ordenar_por_fecha', 'false').lower() == 'true'
+    ordenar_por_descripcion = request.args.get('ordenar_por_descripcion', 'false').lower() == 'true'
+
+    # Comienza con una consulta que obtiene todas las tareas
+    consulta = RegistroTarea.query
+
+    # Si se debe ordenar por fecha de creación, añade ese orden a la consulta
+    if ordenar_por_fecha:
+        consulta = consulta.order_by(RegistroTarea.fecha_creacion)
+
+    # Si se debe ordenar por descripción, añade ese orden a la consulta
+    if ordenar_por_descripcion:
+        consulta = consulta.order_by(RegistroTarea.descripcion)
+
+    # Ejecuta la consulta
+    tareas = consulta.all()
+
+    # Pasa las tareas a la plantilla
+    return render_template('tareas.html', tareas=tareas)
