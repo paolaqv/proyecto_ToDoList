@@ -32,8 +32,8 @@ def nueva_tarea():
 
         nueva_tarea = RegistroTarea(
             descripcion=descripcion,
-            fecha_inicio=datetime.strptime(fecha_inicio, '%Y-%m-%d'),
-            fecha_fin=datetime.strptime(fecha_fin, '%Y-%m-%d') if fecha_fin else None,
+            fecha_inicio=datetime.strptime(fecha_inicio,  '%Y-%m-%dT%H:%M'),
+            fecha_fin=datetime.strptime(fecha_fin,  '%Y-%m-%dT%H:%M') if fecha_fin else None,
             categoria_id=categoria_id,
             estado_id=estado_id,
             usuario_id=usuario_id
@@ -54,8 +54,8 @@ def editar_tarea(tarea_id):
 
     if request.method == 'POST':
         tarea.descripcion = request.form['descripcion']
-        tarea.fecha_inicio = datetime.strptime(request.form['fecha_inicio'], '%Y-%m-%d')
-        tarea.fecha_fin = datetime.strptime(request.form['fecha_fin'], '%Y-%m-%d') if request.form['fecha_fin'] else None
+        tarea.fecha_inicio = datetime.strptime(request.form['fecha_inicio'], '%Y-%m-%dT%H:%M')
+        tarea.fecha_fin = datetime.strptime(request.form['fecha_fin'],'%Y-%m-%dT%H:%M') if request.form['fecha_fin'] else None
         tarea.categoria_id = int(request.form['categoria_id'])
         tarea.estado_id = int(request.form['estado_id'])
 
