@@ -225,7 +225,7 @@ def registro():
         if request.method == 'POST':
             username = request.form['username']
             password = request.form['password']
-            nuevo_usuario = Usuario(username=username, password=generate_password_hash(password), is_active=True)
+            nuevo_usuario = Usuario(username=username, password=password, is_active=True)
 
             db.session.add(nuevo_usuario)
             db.session.commit()

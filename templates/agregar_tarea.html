@@ -415,8 +415,9 @@ input[type=checkbox] {
             <div>
               <label for="categoria_id">Categoría:</label>
               <select id="categoria_id" name="categoria_id">
-                <option value="1">Categoría 1</option>
-                <option value="2">Categoría 2</option>
+                {% for categoria in categorias %}
+                <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                {% endfor %}        
               </select>
             </div>
             <div>
@@ -426,7 +427,7 @@ input[type=checkbox] {
                 <option value="2">En progreso</option>
               </select>
             </div>
-            <button class="glow-on-hover" type="button">Agregar Tarea</button>
+            <button class="glow-on-hover" type="submit">Agregar Tarea</button>
         </form>
     </div>
 </body>  
