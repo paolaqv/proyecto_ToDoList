@@ -102,7 +102,7 @@ input[type=checkbox] {
 /* HAMBURGER MENU */
 .hamburger {
     display: none;
-    font-size: 24px;
+    font-size: 40px;
     user-select: none;
 }
 
@@ -118,7 +118,7 @@ input[type=checkbox] {
 h1 {
     font-size: 40px;
     font-weight: 700;
-    z-index: 1;
+    z-index: 0;
     margin-top: 10px;
     width: 100%;
     text-align: center;
@@ -295,7 +295,7 @@ a:hover .tooltip{
         background-color: #348C72;
         right: 0;
         left: 0;
-        top: 70px;
+        top: 110px;
         text-align: center;
         padding: 20px 0;
         transition: all 0.5s ease-in-out;
@@ -325,6 +325,16 @@ a:hover .tooltip{
         color: #fffaf1;
         transition: all 0.5s ease-in-out;
         transform: scale(1.05);
+    }
+    .list{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        list-style: none;
+        align-items: center;
+        text-transform: uppercase; 
+        width: 100%;
     }
 }
 
