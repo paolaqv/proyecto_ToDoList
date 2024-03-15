@@ -389,6 +389,18 @@ input[type=checkbox] {
         display: block; /* Muestra el menú hamburguesa */
     }
 }
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column; /* Cambia la disposición a una columna en pantallas más pequeñas */
+    width: 90%; /* Aumenta el ancho para utilizar más espacio de la pantalla */
+    margin-top: 10px; /* Añade espacio en la parte superior si es necesario */
+  }
+
+  .login-image, form {
+    width: 100%; /* Establece el ancho a 100% para que ocupen toda la anchura disponible */
+    margin-bottom: 20px; /* Añade un margen en la parte inferior para separar los elementos */
+  }
+}
 </style>
 </html>
 
