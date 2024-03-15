@@ -8,34 +8,58 @@
     <title>Tareas</title>
 </head>
 <body>
-    <h1>Tareas</h1>
-    <p>
-        Ordenar por:
-        <a href="/tareas?ordenar_por_fecha=true">Fecha de creación</a> |
-        <a href="/tareas?ordenar_por_descripcion=true">Descripción</a> |
-        <a href="/tareas?ordenar_por_fecha=true&ordenar_por_descripcion=true">Ambos</a>
-    </p>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Descripción</th>
-                <th>Fecha de inicio</th>
-                <th>Fecha de fin</th>
-                <th>Fecha de creación</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for tarea in tareas %}
-            <tr>
-                <td>{{ tarea.id }}</td>
-                <td>{{ tarea.descripcion }}</td>
-                <td>{{ tarea.fecha_inicio }}</td>
-                <td>{{ tarea.fecha_fin }}</td>
-                <td>{{ tarea.fecha_creacion }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <nav class="navbar">
+        <a class="nav-logo" href="/home">
+            <i class="fas fa-tasks"></i>
+            <h1>Lista de Tareas</h1>
+        </a>
+        <ul class="nav-links">
+            <input type="checkbox" id="checkbox_toggle" />
+            <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+            <div class="menu">
+                <li>
+                    <a href="{{ url_for('nueva_tarea') }}">Agregar Nueva Tarea</a>
+                </li>
+                <li><a href="/categorias">Categorías</a></li>
+                <li><a href="/home?filtro=todas">Todas las Tareas</a></li>
+                <li><a href="/home?filtro=completadas">Tareas Completadas</a></li>
+                <li><a href="/home?filtro=pendientes">Tareas Pendientes</a></li>
+                <li><a href="/home?filtro=en_progreso">Tareas En Progreso</a></li>
+                <li><a href="{{ url_for('reporte') }}">Reporte</a></li>
+                <li><a href="/logout">Cerrar Sesión</a></li>
+            </div>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Tareas</h1>
+        <p class="filter">
+            Ordenar por:
+            <a href="/tareas?ordenar_por_fecha=true">Fecha de creación</a> |
+            <a href="/tareas?ordenar_por_descripcion=true">Nombre</a> |
+            <a href="/tareas?ordenar_por_fecha=true&ordenar_por_descripcion=true">Ambos</a>
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de fin</th>
+                    <th>Fecha de creación</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tarea in tareas %}
+                <tr>
+                    <td>{{ tarea.id }}</td>
+                    <td>{{ tarea.descripcion }}</td>
+                    <td>{{ tarea.fecha_inicio }}</td>
+                    <td>{{ tarea.fecha_fin }}</td>
+                    <td>{{ tarea.fecha_creacion }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
