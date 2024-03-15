@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Gabarito:wght@400..900&family=Roboto+Slab:wght@100..900&display=swap');
+
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;	
+	font-family: 'Gabarito', sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    color: #FFFAF1;
+    overflow: hidden;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/27/Illimani_La_Paz.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.card {		
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	background: linear-gradient(90deg, #348C72, #141415);	
+	height: 50%;
+	width: 50%;
+    border-radius: 30px;	
+	box-shadow: 0px 0px 24px #141415;
+}
+
+.content {
+	z-index: 1;
+	position: relative;	
+	height: 100%;
+}
+
+
+form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.field {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    gap: 10px;
+    justify-content: center;
+}
+
+.field .icon{
+    color: #F5F5F5;
+    font-size: 30px;
+}
+
+.field input{
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.btn {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    width: 200px;
+    background: #F5F5F5;
+    color: #141415;
+    border: #141415 solid 3px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    align-self: center;
+    justify-content: space-around;
+}
+
+.btn input{
+    background: none;
+    border: none;
+    color: #141415;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.btn .icon{
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.btn:hover{
+    background: #141415;
+    color: #F5F5F5;
+    transition: all 0.5s ease-in-out;
+    border: #F5F5F5 3px solid;
+    input{
+        color: #F5F5F5;
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    z-index: 1;
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.sign-up {
+    font-size: 15px;
+    font-weight: 700;
+    z-index: 1;
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up a{
+    color: #F5F5F5;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.sign-up a:hover{
+    text-decoration: underline;
+    transition: all 0.5s ease-in-out;
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        width: 90%;
+    }
+
+    .field input {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        top: 100px;
+        height: auto;
+    }
+
+    .background_shape1,
+    .background_shape2,
+    .background_shape3,
+    .background_shape4 {
+        display: none;
+    }
+}

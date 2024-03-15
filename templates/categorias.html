@@ -1,112 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/ViewStyles.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
     <title>Categorías</title>
 </head>
-<body>
-    <h1>Categorías</h1>
-    <a href="/categoria/nueva">Añadir Nueva Categoría</a>
-    <ul>
-        {% for categoria in categorias %}
-            <li>
-                {{ categoria.nombre }} 
-                <a href="/categoria/editar/{{ categoria.id }}"><i class="fas fa-edit"></i></a>
-                <a href="/categoria/eliminar/{{ categoria.id }}" onclick="return confirm('¿Estás seguro de que quieres eliminar esta categoría?');"><i class="fas fa-trash"></i></a>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="/home">Volver</a>
-</body>
-<style>
 
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #ffdab9;
-        margin: 0;
-        padding: 0;
-    }
-    
-    .container {
-        width: 80%;
-        margin: auto;
-        overflow: hidden;
-    }
-    
-    .header-container {
-        background-color: #f8ad9d;
-        padding: 20px 0;
-        text-align: center;
-    }
-    
-    .header-container h1 {
-        margin: 0;
-        color: #333;
-    }
-    
-    .menu-container {
-        background-color:  #f4978e;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        margin-bottom: 20px;
-    }
-    
-    .menu {
-        list-style-type: none;
-        padding: 10px 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-    }
-    
-    .menu li a {
-        display: block;
-        color: #faf3f3;
-        padding: 8px 15px;
-        text-decoration: none;
-        transition: background-color 0.3s, color 0.3s;
-    }
-    
-    .menu li a:hover, .menu li a.active {
-        background-color: #c8f5f2;
-        color: #333;
-    }
-    
-    ul.lista-tareas {
-        list-style: none;
-        padding-left: 0;
-        margin: 0;
-    }
-    
-    ul.lista-tareas li {
-        background-color: #f7f3f0;
-        border: 1px solid #f7f3f0;
-        padding: 10px;
-        margin-bottom: 5px;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    
-    .tarea-descripcion, .tarea-fecha, .tarea-estado, .tarea-acciones {
-        padding: 0 10px;
-    }
-    
-    .tarea-acciones a {
-        margin: 0 5px;
-        color: #888;
-        transition: color 0.3s;
-    }
-    
-    .tarea-acciones a:hover {
-        color: #5c5c5c;
-    }
-    
-    .fa-check { color: #4caf50; }
-    .fa-edit { color: #ffeb3b; }
-    .fa-trash { color: #f44336; }
-    .completada { color: #4caf50; }
-    .pendiente { color: #59adf7; }
-    </style>
+<body>
+    <nav class="navbar">
+        <a class="nav-logo" href="/home">
+            <i class="fas fa-tasks"></i>
+            <h1>Lista de Tareas</h1>
+        </a>
+        <ul class="nav-links">
+            <input type="checkbox" id="checkbox_toggle" />
+            <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+            <div class="menu">
+                <li>
+                    <a href="{{ url_for('nueva_tarea') }}">Agregar Nueva Tarea</a>
+                </li>
+                <li><a href="/home?filtro=todas">Todas las Tareas</a></li>
+                <li><a href="/home?filtro=completadas">Tareas Completadas</a></li>
+                <li><a href="/home?filtro=pendientes">Tareas Pendientes</a></li>
+                <li><a href="/home?filtro=en_progreso">Tareas En Progreso</a></li>
+                <li><a href="{{ url_for('reporte') }}">Reporte</a></li>
+                <li><a href="/tareas">Lista de Tareas</a></li>
+                <li><a href="/logout">Cerrar Sesión</a></li>
+            </div>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Categorías</h1>
+        <ul class="list">
+            <button class="btn btn-primary" onclick="window.location.href='/categoria/nueva'">
+                Añadir Nueva Categoría
+            </button>
+            <li class="card card-head">
+                <span>Nombre de la Categoría</span>
+                <span>Acciones</span>
+            </li>
+            {% for categoria in categorias %}
+            <li class="card">
+                <span class="name">{{ categoria.nombre }}</span>
+                <div class="actions">
+                    <a class="btn btn-secondary" href="/categoria/editar/{{ categoria.id }}"><i class="fas fa-edit"><span
+                                class="tooltip">Editar</span></i></a>
+                    <a class="btn btn-secondary" href="/categoria/eliminar/{{ categoria.id }}"
+                        onclick="return confirm('¿Estás seguro de que quieres eliminar esta categoría?');" ><i
+                            class="fas fa-trash"><span class="tooltip">Eliminar</span></i></a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
 </html>

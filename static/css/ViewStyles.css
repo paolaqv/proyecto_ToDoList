@@ -108,81 +108,96 @@ input[type=checkbox] {
 
 .container {
     padding: 20px;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'Courier Prime', monospace;
-}
-
-.categoria h2{
-    font-family: 'Gabarito', sans-serif;
-    font-size: 30px;
-    font-weight: 900;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.categoria ul {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: auto;
-    gap: 10px;
-    padding: 20px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-}
-
-.categoria li{    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    list-style: none;
+    width: 100%;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+    z-index: 0;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
     padding: 20px;
-    margin: 10px;
+    font-family: 'Gabarito', sans-serif;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    list-style: none;
+    align-items: center;
+    text-transform: uppercase; 
+    width: 100%;
+}
+
+.card-head span{
+    margin-top: 40px;
+    background-color: #348C72;
+    color: #141415;
+    padding: 20px;
     border-radius: 20px;
-}
-
-.categoria li:hover{
-    transform: scale(1.05);
-    transition: all 0.3s ease-in-out;
-}
-
-.categoria .name{
+    width: 100%;
+    text-align: center;
+    font-family: 'Gabarito', sans-serif;
     font-size: 20px;
-    font-weight: 800;
-    text-transform: uppercase;
+}
+
+.card{
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 10px;
+    border-radius: 20px;
+    width: 100%;
+    color: #141415;
     text-align: center;
 }
 
-.categoria .task{
-    border: #141415 2px solid;
-    background-color: #f5f5f5;
+.card .name{
+
     color: #141415;
-}
-
-.categoria .informacion{
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    font-size: 20px;
+    background-color: #e4e4e4;
+    border-radius: 20px;
     justify-content: center;
-    margin: 10px;
+    align-items: center;
+    padding: 30px;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    font-family: 'Gabarito', sans-serif;
+    font-size: 30px;
 }
 
-.categoria .acciones{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+.card .name:hover{
+    color: #fffaf1;
+    background-color: #141415;
+    transition: all 0.5s ease-in-out;
+}
+
+.card .actions{
+    display: flex;
+    flex-direction: row;
     gap: 10px;
-    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
 }
 
-.btn{
+.actions a{
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
     background-color: #348C72;
     color: #141415;
     text-align: center;
@@ -192,21 +207,22 @@ input[type=checkbox] {
     cursor: pointer;
 }
 
-.btn:hover{
+.btn-secondary:hover{
     background-color: #141415;
     color: #fffaf1;
     transition: all 0.5s ease-in-out;
 }
 
-.btn i{
-    font-size: 20px;
-    padding: 15px;
+.actions i{
+    font-size: 30px;
     border-radius: 10px;
     color: #141415;
     text-align: center;
+    padding: 20px;
+    z-index: 0;
 }
 
-.btn:hover i{
+.actions a:hover i{
     color: #fffaf1;
     transition: all 0.5s ease-in-out;
 }
@@ -215,9 +231,10 @@ input[type=checkbox] {
 .tooltip {
     font-family: 'Gabarito', sans-serif;
     font-weight: 300;
+    font-size: 15px;
     visibility: hidden;
     width: 200px;
-    padding: 0 10px;
+    padding: 0 5px;
     background-color: #414141;
     color: #fffaf1;
     text-align: center;
@@ -244,10 +261,101 @@ input[type=checkbox] {
     border-color: #414141 transparent transparent transparent;
 }
 
-.btn:hover .tooltip {
+a:hover .tooltip{
     visibility: visible;
     opacity: 1;
 }
+
+.btn-primary {
+    border: none;
+    padding: 20px;
+    width: 100%;
+    background: #348C72;
+    color: #141415;
+    font-size: 20px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    align-self: center;
+    justify-content: space-around;
+}
+
+.btn-primary:hover{
+    background: #141415;
+    color: #fffaf1;
+    transition: all 0.5s ease-in-out;
+}
+
+.filter{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    background-color: #348C72;
+    color: #141415;
+    font-family: 'Gabarito', sans-serif;
+    font-size: 20px;
+    border-radius: 20px;
+    text-align: center;
+    text-wrap: nowrap;
+}
+
+.filter a{
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #141415;
+    text-align: center;
+    z-index: 0;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.filter a:hover{
+    color: #fffaf1;
+    transition: all 0.5s ease-in-out;
+    transform: scale(1.05);
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 20px;
+}
+
+th{
+    background-color: #348C72;
+    color: #141415;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Gabarito', sans-serif;
+    font-size: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: #e4e4e4;
+}
+
+tr:nth-child(odd) {
+    background-color: #f5f5f5;
+}
+
+td {
+    color: #141415;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 15px;
+}
+
 
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 1500px) {
@@ -257,7 +365,7 @@ input[type=checkbox] {
         background-color: #348C72;
         right: 0;
         left: 0;
-        top: 70px;
+        top: 110px;
         text-align: center;
         padding: 20px 0;
         transition: all 0.5s ease-in-out;
@@ -287,6 +395,16 @@ input[type=checkbox] {
         color: #fffaf1;
         transition: all 0.5s ease-in-out;
         transform: scale(1.05);
+    }
+    .list{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        list-style: none;
+        align-items: center;
+        text-transform: uppercase; 
+        width: 100%;
     }
 }
 
@@ -360,96 +478,5 @@ input[type=checkbox] {
         color: #fffaf1;
         transition: all 0.5s ease-in-out;
         transform: scale(1.05);
-    }
-
-    .categoria ul {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: auto;
-        gap: 10px;
-        padding: 20px;
-        border-radius: 20px;
-        margin-bottom: 20px;
-    }
-
-    .categoria li{    
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        list-style: none;
-        padding: 20px;
-        margin: 10px;
-        border-radius: 20px;
-    }
-
-    .categoria .name{
-        font-size: 20px;
-        font-weight: 800;
-        text-transform: uppercase;
-        text-align: center;
-    }
-
-    .categoria .task{
-        border: #141415 2px solid;
-        background-color: #f5f5f5;
-        color: #141415;
-    }
-
-    .categoria .informacion{
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        font-size: 20px;
-        justify-content: center;
-        margin: 10px;
-    }
-
-}
-
-@media screen and (max-width: 600px){
-    .categoria ul {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-auto-rows: auto;
-        gap: 10px;
-        padding: 20px;
-        border-radius: 20px;
-        margin-bottom: 20px;
-    }
-
-    .categoria li{    
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        list-style: none;
-        padding: 20px;
-        margin: 10px;
-        border-radius: 20px;
-    }
-
-    .categoria .name{
-        font-size: 20px;
-        font-weight: 800;
-        text-transform: uppercase;
-        text-align: center;
-    }
-
-    .categoria .task{
-        border: #141415 2px solid;
-        background-color: #f5f5f5;
-        color: #141415;
-    }
-
-    .categoria .informacion{
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        font-size: 20px;
-        justify-content: center;
-        margin: 10px;
     }
 }

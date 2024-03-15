@@ -12,7 +12,7 @@
   </head>
   <body>
     <nav class="navbar">
-      <a class="nav-logo" href="/">
+      <a class="nav-logo" href="/home">
         <i class="fas fa-tasks"></i>
         <h1>Lista de Tareas</h1>
       </a>
@@ -27,9 +27,10 @@
           <li><a href="/home?filtro=todas">Todas las Tareas</a></li>
           <li><a href="/home?filtro=completadas">Tareas Completadas</a></li>
           <li><a href="/home?filtro=pendientes">Tareas Pendientes</a></li>
-          <li><a href="/home?filtro=en_progreso">Ver Tareas En Progreso</a></li>
+          <li><a href="/home?filtro=en_progreso">Tareas En Progreso</a></li>
           <li><a href="{{ url_for('reporte') }}">Reporte</a></li>
-
+          <li><a href="/tareas">Lista de Tareas</a></li>
+          <li><a href="/logout">Cerrar Sesión</a></li>
         </div>
       </ul>
     </nav>

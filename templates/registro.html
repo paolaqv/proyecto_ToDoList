@@ -1,22 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Registro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/loginStyles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <title>Crear una Cuenta</title>
 </head>
 <body>
-    <h2>Registro</h2>
-    <form action="/registro" method="post">
-        <div>
-            <label for="username">Nombre de usuario:</label>
-            <input type="text" id="username" name="username" required>
+    <div class="container">
+        <div class="card">
+            <h1>Registrarse</h1>
+            <div class="content">
+                <form action="/registro" method="post">
+                    <div class="field">
+                        <i class="icon fas fa-user"></i>
+                        <input type="text" id="username" placeholder="Nombre de Usuario" name="username" required>
+                    </div>
+                    <div class="field">
+                        <i class="icon fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Contraseña" name="password" required>
+                    </div>
+                    <div class="btn">
+                        <i class="icon fas fa-sign-in-alt"><input class="submit" type="submit" value="Registrar">		</i>
+                    </div>
+                    <span class="sign-up">¿Ya tiene una cuenta?<a href="/">Inicie Sesión aqui</a></span>
+                </form>
+            </div>	
         </div>
-        <div>
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div>
-            <input type="submit" value="Registrar">
-        </div>
-    </form>
+    </div>
 </body>
 </html>
+
