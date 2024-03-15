@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/ViewStyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+    />
     <title>Reporte de Tareas</title>
-</head>
-<body>
-    <h1>Reporte de Tareas</h1>
-    <p>Porcentaje de tareas completadas: {{ porcentaje_completadas }}%</p>
-    <p>Porcentaje de tareas pendientes: {{ porcentaje_pendientes }}%</p>
-    <p>Porcentaje de tareas en progreso: {{ porcentaje_en_progreso }}%</p>
-    <p>Tiempo promedio en completar una tarea: {{ tiempo_promedio }} horas</p>
-    <p>Tiempo máximo en completar una tarea: {{ tiempo_maximo }} días</p>
-    <p>Tiempo mínimo en completar una tarea: {{ tiempo_minimo }} días</p>
-    <p>Categoría con más tareas: {{ categoria_con_mas_tareas.nombre if categoria_con_mas_tareas else 'N/A' }}</p>
-</body>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a class="nav-logo" href="/home">
+          <i class="fas fa-tasks"></i>
+          <h1>Lista de Tareas</h1>
+      </a>
+      <ul class="nav-links">
+          <input type="checkbox" id="checkbox_toggle" />
+          <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+          <div class="menu">
+              <li>
+                  <a href="{{ url_for('nueva_tarea') }}">Agregar Nueva Tarea</a>
+              </li>
+              <li><a href="/categorias">Categorías</a></li>
+              <li><a href="/home?filtro=todas">Todas las Tareas</a></li>
+              <li><a href="/home?filtro=completadas">Tareas Completadas</a></li>
+              <li><a href="/home?filtro=pendientes">Tareas Pendientes</a></li>
+              <li><a href="/home?filtro=en_progreso">Tareas En Progreso</a></li>
+              <li><a href="/tareas">Lista de Tareas</a></li>
+              <li><a href="/logout">Cerrar Sesión</a></li>
+          </div>
+      </ul>
+  </nav>
+    <div class="container">
+      <h1>Reporte de Tareas</h1>
+      <div class="report">
+        <div class="percents">
+          <span class="percent">Porcentaje de tareas completadas:<p class="result">{{ porcentaje_completadas }}%</p></span>
+          <span class="percent">Porcentaje de tareas pendientes:<p class="result">{{ porcentaje_pendientes }}%</p></span>
+          <span class="percent">Porcentaje de tareas en progreso:<p class="result">{{ porcentaje_en_progreso }}%</p></span>
+        </div>
+        <div class="stats">
+          <p class="stat avg">
+            Tiempo promedio en completar una tarea:<h3>{{ tiempo_promedio }}</h3>
+          </p>
+          <p class="stat max">Tiempo máximo en completar una tarea:<h3>{{ tiempo_maximo }}</h3></p>
+          <p class="stat min">Tiempo mínimo en completar una tarea:<h3>{{ tiempo_minimo }}</h3></p>
+          <p class="stat cat">
+            Categoría con más tareas:<h3>{{ categoria_con_mas_tareas.nombre if
+            categoria_con_mas_tareas else 'N/A' }}</h3>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
