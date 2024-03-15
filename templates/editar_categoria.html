@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
     <title>Editar Categoría</title>
 </head>
 <body>
+    <nav class="navbar">
+        <a class="nav-logo" href="/home">
+            <i class="fas fa-tasks"></i>
+            <h1>Lista de Tareas</h1>
+        </a>
+        <ul class="nav-links">
+            <input type="checkbox" id="checkbox_toggle" />
+            <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+            <div class="menu">
+                <li><a href="/home?filtro=todas">Todas las Tareas</a></li>
+                <li><a href="/home?filtro=completadas">Tareas Completadas</a></li>
+                <li><a href="/home?filtro=pendientes">Tareas Pendientes</a></li>
+                <li><a href="/home?filtro=en_progreso">Tareas En Progreso</a></li>
+                <li><a href="{{ url_for('reporte') }}">Reporte</a></li>
+                <li><a href="/tareas">Lista de Tareas</a></li>
+                <li><a href="/logout">Cerrar Sesión</a></li>
+            </div>
+        </ul>
+    </nav>
     <div class="container">
         <div class="login-image">
             <!-- La imagen se establecerá con CSS, aquí he usado un placeholder. Reemplaza la URL con tu propia imagen. -->
@@ -20,27 +40,23 @@
 </body>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Gabarito:wght@400..900&family=Roboto+Slab:wght@100..900&display=swap');
-  body {
-    font-family: 'Gabarito', sans-serif;
-      background-color: #FFFAF1;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-  }
+    body {
+            font-family: 'Gabarito', sans-serif;
+            background-color: #FFFAF1;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
 
-  .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 80%;
-      max-width: 1200px;
-      gap: 5px;
-  }
-
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            max-width: 1200px;
+            gap: 5px;
+            margin: 20px auto;
+        }
   .login-image {
       width: 20%;
       background: rgba(0, 0, 0, 0.9) url('../static/img/editar.png') no-repeat center center;
@@ -149,6 +165,229 @@ border-radius: 10px;
 0% { background-position: 0 0; }
 50% { background-position: 400% 0; }
 100% { background-position: 0 0; }
+}
+
+.navbar {
+    font-family: 'Gabarito', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #348C72;
+    padding: 10px;
+    color: #141415;
+    z-index: 1;
+    
+}
+
+.nav-logo {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    text-decoration: none;
+    color: #141415;
+
+    i {
+        font-size: 40px;
+    }
+
+    h1 {
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
+
+.nav-logo:hover {
+    color: #fffaf1;
+    transition: all 0.5s ease-in-out;
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    list-style: none;
+    align-items: center;
+    text-transform: uppercase;
+
+    li {
+        a {
+            color: #141415;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 15px;
+            text-align: center;
+            text-wrap: nowrap;
+        }
+
+        a:hover {
+            color: #fffaf1;
+            transition: all 0.5s ease-in-out;
+        }
+    }
+}
+
+.menu {
+    display: flex;
+    gap: 15px;
+    font-size: 15px;
+    list-style: none;
+    position: relative;
+    z-index: 1;
+}
+
+/* RESPONSIVE NAVBAR MENU STARTS */
+
+/* CHECKBOX HACK */
+
+input[type=checkbox] {
+    display: none;
+}
+
+/* HAMBURGER MENU */
+.hamburger {
+    display: none;
+    font-size: 40px;
+    user-select: none;
+}
+/* APPLYING MEDIA QUERIES */
+@media (max-width: 1500px) {
+    .menu {
+        display: none;
+        position: absolute;
+        background-color: #348C72;
+        right: 0;
+        left: 0;
+        top: 110px;
+        text-align: center;
+        padding: 20px 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .menu li:hover {
+        display: inline-block;
+        transition: all 0.5s ease;
+        transform: scale(1.5);
+    }
+
+    .menu li+li {
+        margin-top: 20px;
+    }
+
+    input[type=checkbox]:checked~.menu {
+        display: block;
+    }
+
+    .hamburger {
+        display: block;
+        color: #141415;
+        font-weight: 700;
+    }
+
+    .hamburger:hover {
+        color: #fffaf1;
+        transition: all 0.5s ease-in-out;
+        transform: scale(1.05);
+    }
+    .list{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        list-style: none;
+        align-items: center;
+        text-transform: uppercase; 
+        width: 100%;
+    }
+}
+
+@media (max-width: 830px) {
+    .nav-bar {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-logo {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        text-decoration: none;
+        color: #141415;
+
+        i {
+            font-size: 20px;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+
+    .nav-logo:hover {
+        color: #fffaf1;
+        transition: all 0.5s ease-in-out;
+        transform: scale(1.05);
+    }
+
+    .menu {
+        display: none;
+        position: absolute;
+        background-color: #348C72;
+        right: 0;
+        left: 0;
+        top: 70px;
+        text-align: center;
+        padding: 20px 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .menu li:hover {
+        display: inline-block;
+        transition: all 0.5s ease;
+        transform: scale(1.5);
+    }
+
+    .menu li+li {
+        margin-top: 20px;
+    }
+
+    input[type=checkbox]:checked~.menu {
+        display: block;
+    }
+
+    .hamburger {
+        display: block;
+        color: #141415;
+        font-weight: 700;
+    }
+
+    .hamburger:hover {
+        color: #fffaf1;
+        transition: all 0.5s ease-in-out;
+        transform: scale(1.05);
+    }
+}
+.navbar {
+            background-color: #348C72;
+            padding: 20px;
+            color: #141415;
+        }
+        @media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Oculta los enlaces en pantallas pequeñas */
+    }
+
+    .hamburger {
+        display: block; /* Muestra el menú hamburguesa */
+    }
 }
 </style>
 </html>
