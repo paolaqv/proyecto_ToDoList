@@ -14,13 +14,17 @@
             <input type="checkbox" id="checkbox_toggle" />
             <label for="checkbox_toggle" class="hamburger">&#9776;</label>
             <div class="menu">
-                <li><a href="/home?filtro=todas">Todas las Tareas</a></li>
-                <li><a href="/home?filtro=completadas">Tareas Completadas</a></li>
-                <li><a href="/home?filtro=pendientes">Tareas Pendientes</a></li>
-                <li><a href="/home?filtro=en_progreso">Tareas En Progreso</a></li>
-                <li><a href="{{ url_for('reporte') }}">Reporte</a></li>
-                <li><a href="/tareas">Lista de Tareas</a></li>
-                <li><a href="/logout">Cerrar Sesión</a></li>
+                <li>
+                    <a href="{{ url_for('nueva_tarea') }}">Agregar Nueva Tarea</a>
+                  </li>
+                  <li><a href="/categorias">Categorías</a></li>
+                  <li><a href="/home?filtro=todas">Todas las Tareas</a></li>
+                  <li><a href="/home?filtro=completadas">Tareas Completadas</a></li>
+                  <li><a href="/home?filtro=pendientes">Tareas Pendientes</a></li>
+                  <li><a href="/home?filtro=en_progreso">Tareas En Progreso</a></li>
+                  <li><a href="{{ url_for('reporte') }}">Reporte</a></li>
+                  <li><a href="/tareas">Lista de Tareas</a></li>
+                  <li><a href="/logout">Cerrar Sesión</a></li>
             </div>
         </ul>
     </nav>
@@ -84,7 +88,7 @@
 
   .login-image {
       width: 20%;
-      background: rgba(0, 0, 0, 0.9) url('../static/img/perfil.png') no-repeat center center;
+      background: rgba(0, 0, 0, 0.9) url('/static/img/perfil.png') no-repeat center center;
       background-size: 70%;
       border-radius: 5px;
       height: 636px;
