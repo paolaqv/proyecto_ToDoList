@@ -139,6 +139,26 @@
   </style>
 </head>
 <body>
+  <nav class="navbar">
+    <a class="nav-logo" href="/home">
+        <i class="fas fa-tasks"></i>
+        <h1>Lista de Tareas</h1>
+    </a>
+    <ul class="nav-links">
+        <input type="checkbox" id="checkbox_toggle" />
+        <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+        <div class="menu">
+      
+            <li><a href="/home?filtro=todas">Todas las Tareas</a></li>
+            <li><a href="/home?filtro=completadas">Tareas Completadas</a></li>
+            <li><a href="/home?filtro=pendientes">Tareas Pendientes</a></li>
+            <li><a href="/home?filtro=en_progreso">Tareas En Progreso</a></li>
+            <li><a href="{{ url_for('reporte') }}">Reporte</a></li>
+            <li><a href="/tareas">Lista de Tareas</a></li>
+            <li><a href="/logout">Cerrar Sesión</a></li>
+        </div>
+    </ul>
+</nav>
     <div class="container">
         <div class="login-image">
             <!-- La imagen se establecerá con CSS, aquí he usado un placeholder. Reemplaza la URL con tu propia imagen. -->
