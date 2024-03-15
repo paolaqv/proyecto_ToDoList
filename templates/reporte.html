@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reporte de Tareas</title>
+</head>
+<body>
+    <h1>Reporte de Tareas</h1>
+    <p>Porcentaje de tareas completadas: {{ porcentaje_completadas }}%</p>
+    <p>Porcentaje de tareas pendientes: {{ porcentaje_pendientes }}%</p>
+    <p>Porcentaje de tareas en progreso: {{ porcentaje_en_progreso }}%</p>
+    <p>Tiempo promedio en completar una tarea: {{ tiempo_promedio }} horas</p>
+    <p>Tiempo máximo en completar una tarea: {{ tiempo_maximo }} días</p>
+    <p>Tiempo mínimo en completar una tarea: {{ tiempo_minimo }} días</p>
+    <p>Categoría con más tareas: {{ categoria_con_mas_tareas.nombre if categoria_con_mas_tareas else 'N/A' }}</p>
+</body>
+</html>
