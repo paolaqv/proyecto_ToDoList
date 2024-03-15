@@ -24,10 +24,10 @@
             <a href="{{ url_for('nueva_tarea') }}">Agregar Nueva Tarea</a>
           </li>
           <li><a href="/categorias">Categorías</a></li>
-          <li><a href="/?filtro=todas">Todas las Tareas</a></li>
-          <li><a href="/?filtro=completadas">Tareas Completadas</a></li>
-          <li><a href="/?filtro=pendientes">Tareas Pendientes</a></li>
-          <li><a href="/?filtro=en_progreso">Ver Tareas En Progreso</a></li>
+          <li><a href="/home?filtro=todas">Todas las Tareas</a></li>
+          <li><a href="/home?filtro=completadas">Tareas Completadas</a></li>
+          <li><a href="/home?filtro=pendientes">Tareas Pendientes</a></li>
+          <li><a href="/home?filtro=en_progreso">Ver Tareas En Progreso</a></li>
           <li><a href="{{ url_for('reporte') }}">Reporte</a></li>
 
         </div>
